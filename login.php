@@ -13,7 +13,6 @@
 <script async>
     const form = document.querySelector("#formUsers");
     form.addEventListener("submit", async (e) => {
-
         e.preventDefault();
         const dataUser = new FormData(form);
         const data = await fetch("http://localhost/tfd-2am/api/user-insert.php",{
@@ -22,7 +21,5 @@
         });
         const user = await data.text();
         console.log(user);
-
     });
-
 </script>
