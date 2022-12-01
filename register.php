@@ -66,7 +66,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <form id="login-form" class="contact__form " method="post">
+                <form id="register-form" class="contact__form " method="post" novalidate>
                     <!-- form message -->
                     <div class="row">
                         <div class="col-12">
@@ -75,29 +75,45 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="email" id="email" type="email" class="form-control" placeholder="Seu e-amail..." >
+                                <input name="name" id="name" type="text" class="form-control" placeholder="Seu nome completo" >
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="email" id="email" type="email" class="form-control" placeholder="Seu E-mail">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input name="password" id="password" type="password" class="form-control" placeholder="Sua senha...">
+                                <input name="password" id="password" type="text" class="form-control" placeholder="Defina sua senha">
                             </div>
                         </div>
+                        <!--<div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
+                            </div>
+                        </div>-->
                     </div>
+
+                    <!--<div class="form-group-2 mb-4">
+                        <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your Message"></textarea>
+                    </div>-->
 
                     <div class="text-center">
                         <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Enviar"></input>
                     </div>
                 </form>
                 <script async>
-                    const form = document.querySelector("#login-form");
+                    const form = document.querySelector("#register-form");
                     form.addEventListener("submit", async (e) => {
                         e.preventDefault();
                         const dataUser = new FormData(form);
-                        const data = await fetch("http://localhost/tfd-2am/api/user-login.php",{
+                        const data = await fetch("http://localhost/tfd-2am/api/user-insert.php",{
                             method: "POST",
                             body: dataUser,
                         });
@@ -109,6 +125,8 @@
         </div>
     </div>
 </section>
+
+
 <div class="google-map ">
     <div id="map"></div>
 </div>
@@ -138,6 +156,8 @@ Essential Scripts
 
 <script src="js/script.js"></script>
 <script src="js/contact.js"></script>
+
+
 
 </body>
 </html>

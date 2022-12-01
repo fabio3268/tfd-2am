@@ -1,7 +1,5 @@
 <?php
 
-echo "Olá, " . $_POST["name"];
-
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -24,3 +22,15 @@ $password = $_POST["password"];
 
 $query = "INSERT INTO users VALUES (NULL, '$name', '$email','$password','C')";
 $stmt = $conn->query($query);
+
+/*$post = filter_input_array(INPUT_POST,FILTER_DEFAULT);
+
+if(in_array("",$post)){
+    echo "informe nome";
+}*/
+
+/*$response = [
+    "type" => "success",
+    "message" => "Usuário cadastrado com sucesso"
+];
+echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);*/
