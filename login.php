@@ -70,7 +70,7 @@
                     <!-- form message -->
                     <div class="row">
                         <div class="col-12">
-                            <div id="message" class="alert alert-danger contact__msg"  role="alert">
+                            <div id="message" class="alert alert-success contact__msg"  role="alert">
                             </div>
                         </div>
                     </div>
@@ -92,6 +92,7 @@
                 </form>
                 <script async>
                     const form = document.querySelector("#login-form");
+                    const message = document.querySelector("#message");
                     form.addEventListener("submit", async (e) => {
                         e.preventDefault();
                         const dataUser = new FormData(form);
@@ -101,11 +102,15 @@
                         });
                         const user = await data.json();
                         console.log(user);
-                        document.querySelector("#message").textContent = user.message;
+                        message.textContent = user.message;
                         if(user.type === "error"){
                           // trocar o status da message
+                            message.classList.remove("alert-success");
+                            message.classList.add("alert-danger");
                         } else {
                           // trocar o status da message
+                            message.classList.remove("alert-danger");
+                            message.classList.add("alert-success");
                         }
                     });
                 </script>
