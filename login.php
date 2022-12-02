@@ -70,8 +70,7 @@
                     <!-- form message -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                Your message was sent successfully.
+                            <div id="message" class="alert alert-danger contact__msg"  role="alert">
                             </div>
                         </div>
                     </div>
@@ -87,7 +86,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="text-center">
                         <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Enviar"></input>
                     </div>
@@ -101,8 +99,14 @@
                             method: "POST",
                             body: dataUser,
                         });
-                        const user = await data.text();
+                        const user = await data.json();
                         console.log(user);
+                        document.querySelector("#message").textContent = user.message;
+                        if(user.type === "error"){
+                          // trocar o status da message
+                        } else {
+                          // trocar o status da message
+                        }
                     });
                 </script>
             </div>

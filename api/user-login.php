@@ -27,8 +27,15 @@ $stmt = $conn->query($query);
 
 if($stmt->rowCount() == 1){
     $row = $stmt->fetch();
-    echo "Olá, {$row->name}!";
+    $response = [
+        "type" => "success",
+        "message" => "Olá, {$row->name}! "
+    ];
+    echo json_encode($response);
 } else{
-    echo "Email ou Senha não cadastrados";
+    $response = [
+        "type" => "error",
+        "message" => "Email ou Senha não cadastrados"
+    ];
+    echo json_encode($response);
 }
-
