@@ -70,7 +70,7 @@
                     <!-- form message -->
                     <div class="row">
                         <div class="col-12">
-                            <div id="message" class="alert alert-success contact__msg"  role="alert">
+                            <div id="message" class="alert alert-success contact__msg" style="display: none"  role="alert">
                             </div>
                         </div>
                     </div>
@@ -103,6 +103,7 @@
                         const user = await data.json();
                         console.log(user);
                         message.textContent = user.message;
+                        message.setAttribute("style","display")
                         if(user.type === "error"){
                           // trocar o status da message
                             message.classList.remove("alert-success");
@@ -112,6 +113,9 @@
                             message.classList.remove("alert-danger");
                             message.classList.add("alert-success");
                         }
+                        setTimeout(() => {
+                            message.setAttribute("style","display: none")
+                        }, 3000);
                     });
                 </script>
             </div>
