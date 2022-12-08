@@ -19,6 +19,8 @@ $name = $_POST["name"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 
+
+
 $query = "INSERT INTO users VALUES (NULL, '$name', '$email','$password','C')";
 $stmt = $conn->query($query);
 

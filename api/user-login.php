@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -15,6 +16,7 @@ $conn = new PDO(
     $options
 );
 
+
 $email = $_POST["email"];
 $password = $_POST["password"];
 
@@ -27,12 +29,16 @@ $stmt = $conn->query($query);
 
 if($stmt->rowCount() == 1){
     $row = $stmt->fetch();
+    $_SESSION["id"] = $row->id;
+    $_SESSION["name"] = $row->name;
+    $_SESSION["email"] = $row->email;
     $response = [
         "type" => "success",
         "message" => "Olá, {$row->name}! "
     ];
     echo json_encode($response);
 } else{
+
     $response = [
         "type" => "error",
         "message" => "Email ou Senha não cadastrados"
